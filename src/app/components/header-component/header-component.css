@@ -1,0 +1,25 @@
+/* Inicio Estilos genericos de html */
+.main-body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container__wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.line-bottom {
+  border-bottom: 1px solid #ccc;
+}
+/* Final Estilos genericos de html */
+
+/* Inicio Estilos header */
+.header-container--title {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+/* Final Estilos header */

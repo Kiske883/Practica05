@@ -13,3 +13,12 @@
   border-bottom: 1px solid #ccc;
 }
 /* Final Estilos genericos de html */
+
+/* Inicio Estilos footer */
+.container__wrapper-footer {
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+/* Final Estilos footer */
