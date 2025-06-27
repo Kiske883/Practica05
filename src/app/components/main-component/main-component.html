@@ -1,46 +1,42 @@
-<p>main-component works!</p>
+<div class="container__wrapper">
+  <section class="formulario">
+    <h2>Publicar nueva noticia</h2>
+    <form (submit)="publicar(); $event.preventDefault()">
+      <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
+      <input
+        [(ngModel)]="imagen"
+        name="imagen"
+        placeholder="URL de la imagen"
+        required
+      />
+      <textarea
+        [(ngModel)]="texto"
+        name="texto"
+        placeholder="Texto de la noticia"
+        required
+      ></textarea>
+      <input [(ngModel)]="fecha" name="fecha" type="date" required />
+      <button type="submit">Publicar</button>
+    </form>
+  </section>
 
-<section class="formulario container__wrapper">
-  <h2>Publicar nueva noticia</h2>
-  <form (submit)="publicar(); $event.preventDefault()">
-    <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
-    <input
-      [(ngModel)]="imagen"
-      name="imagen"
-      placeholder="URL de la imagen"
-      required
-    />
-    <textarea
-      [(ngModel)]="texto"
-      name="texto"
-      placeholder="Texto de la noticia"
-      required
-    ></textarea>
-    <input [(ngModel)]="fecha" name="fecha" type="date" required />
-    <button type="submit">Publicar</button>
-  </form>
-</section>
+  <hr />
 
-<hr />
-
-<section class="noticias container__wrapper">
-  <h2>Listado de noticias</h2>
-
-  <!-- LAN0 - 20250627 - Juan lo he intentado por activa y por pasiva y aunque en la 
+  <section class="noticias">
+    <h2>Listado de noticias</h2>
+    <!-- LAN0 - 20250627 - Juan lo he intentado por activa y por pasiva y aunque en la 
                          documentacion de angular https://angular.dev/api/common/NgFor
                          dice que esta deprecated y que utilice @for, no he conseguido 
-                         hacerlo funcionar. 
-
+                         hacerlo funcionar.   
   <ng-template @for let-noticia [of]="noticias()"> -->
-  <div *ngFor="let noticia of noticias()" class="noticia">
-    <div class="noticia">
-      <h3>{{ noticia.titulo }}</h3>
-      <img [src]="noticia.imagen" alt="{{ noticia.titulo }}" width="200" />
-      <p>{{ noticia.texto }}</p>
-      <small>Publicado el: {{ noticia.fecha }}</small>
-      <hr />
+    <div class="noticias-container-wrapper">
+      <div *ngFor="let noticia of noticias()" class="noticia">
+        <h3>{{ noticia.titulo }}</h3>
+        <img [src]="noticia.imagen" alt="{{ noticia.titulo }}" width="200" />
+        <p>{{ noticia.texto }}</p>
+        <small>Publicado el: {{ noticia.fecha }}</small>
+        <hr />
+      </div>
     </div>
+  </section>
 </div>
-</section>
-
-<p>main-component works!</p>

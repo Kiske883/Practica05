@@ -9,29 +9,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './main-component.css'
 })
 
-/* Buenas Juan, he intentado añadir a MainComponent una interface, 
-   al igual que utilizar decoradores, pero Angular se queja, imagino
-   que estoy cruzando clases, entre la de typeScript y Angular, pero
-   entendia que podia utilizarlo sin problema. 
-   
-interface IMainComponent {
-
-    titulo : string ; 
-    imagen : string ; 
-    texto : string ;
-    fecha : string ; 
-
-}
-*/
-
 // export class MainComponent implements IMainComponent{
-export class MainComponent {
+export class MainComponent implements IMainComponent {
   titulo = '';
   imagen = '';
   texto = '';
   fecha = '';
 
-  noticias: WritableSignal<Noticia[]> = signal([
+  defaultImage : string = "https://placehold.co/200x120";
+
+  noticias: WritableSignal<IMainComponent[]> = signal([
     {
       titulo: 'Angular 20 lanzado',
       imagen: 'https://placehold.co/200x120',
@@ -52,7 +39,7 @@ export class MainComponent {
       return;
     }
 
-    const nuevaNoticia: Noticia = {
+    const nuevaNoticia: IMainComponent = {
       titulo: this.titulo,
       imagen: this.imagen,
       texto: this.texto,
@@ -69,7 +56,7 @@ export class MainComponent {
 }
 
 // Añado la interface fuera de la clase mainComponent
-export interface Noticia {
+export interface IMainComponent {
   titulo: string;
   imagen: string;
   texto: string;
