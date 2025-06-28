@@ -1,16 +1,19 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NewViewComponent } from '../new-view-component/new-view-component';
+import { INoticiaInterface } from '../../interfaces/inoticia-interface';
 
 @Component({
   selector: 'app-main-component',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,NewViewComponent],
   templateUrl: './main-component.html',
   styleUrl: './main-component.css'
 })
 
 // export class MainComponent implements IMainComponent{
-export class MainComponent implements IMainComponent {
+export class MainComponent implements INoticiaInterface {
+  
   titulo = '';
   imagen = '';
   texto = '';
@@ -18,7 +21,7 @@ export class MainComponent implements IMainComponent {
 
   defaultImage : string = "https://placehold.co/200x120";
 
-  noticias: WritableSignal<IMainComponent[]> = signal([
+  noticias: WritableSignal<INoticiaInterface[]> = signal([
     {
       titulo: 'Angular 20 lanzado',
       imagen: 'https://placehold.co/200x120',
@@ -39,7 +42,7 @@ export class MainComponent implements IMainComponent {
       return;
     }
 
-    const nuevaNoticia: IMainComponent = {
+    const nuevaNoticia: INoticiaInterface = {
       titulo: this.titulo,
       imagen: this.imagen,
       texto: this.texto,
@@ -53,12 +56,4 @@ export class MainComponent implements IMainComponent {
     this.texto = '';
     this.fecha = '';
   }
-}
-
-// Añado la interface fuera de la clase mainComponent
-export interface IMainComponent {
-  titulo: string;
-  imagen: string;
-  texto: string;
-  fecha: string;
 }

@@ -40,3 +40,24 @@
     </div>
   </section>
 </div>
+
+<section class="noticias">
+  <h2>Vista de noticia destacada</h2>
+  
+  <app-new-view-component
+    [titulo]="noticias()[0].titulo"
+    [imagen]="noticias()[0].imagen"
+    [texto]="noticias()[0].texto"
+    [fecha]="noticias()[0].fecha"
+  >
+  </app-new-view-component>
+
+  <app-new-view-component
+    [titulo]="noticias()[1].titulo"
+    [imagen]="noticias()[1].imagen"
+    [texto]="noticias()[1].texto"
+    [fecha]="noticias()[1].fecha"
+  >
+  </app-new-view-component>
+
+</section>
