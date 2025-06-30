@@ -21,14 +21,9 @@
   </section>
 
   <hr />
-
+  <!--
   <section class="noticias">
     <h2>Listado de noticias</h2>
-    <!-- LAN0 - 20250627 - Juan lo he intentado por activa y por pasiva y aunque en la 
-                         documentacion de angular https://angular.dev/api/common/NgFor
-                         dice que esta deprecated y que utilice @for, no he conseguido 
-                         hacerlo funcionar.   
-  <ng-template @for let-noticia [of]="noticias()"> -->
     <div class="noticias-container-wrapper">
       <div *ngFor="let noticia of noticias()" class="noticia">
         <h3>{{ noticia.titulo }}</h3>
@@ -39,25 +34,22 @@
       </div>
     </div>
   </section>
+-->
+
+  <section class="noticias">
+    <div class="noticias-wrapper">
+    <h2>Vista de noticia destacada</h2>
+    <div class="noticias-container-wrapper">
+      @for(noticia of noticias();track noticia.titulo) {
+      <app-new-view-component
+        [titulo]="noticia.titulo"
+        [imagen]="noticia.imagen"
+        [texto]="noticia.texto"
+        [fecha]="noticia.fecha"
+      >
+      </app-new-view-component>
+      }
+    </div>
+    </div>
+  </section>
 </div>
-
-<section class="noticias">
-  <h2>Vista de noticia destacada</h2>
-  
-  <app-new-view-component
-    [titulo]="noticias()[0].titulo"
-    [imagen]="noticias()[0].imagen"
-    [texto]="noticias()[0].texto"
-    [fecha]="noticias()[0].fecha"
-  >
-  </app-new-view-component>
-
-  <app-new-view-component
-    [titulo]="noticias()[1].titulo"
-    [imagen]="noticias()[1].imagen"
-    [texto]="noticias()[1].texto"
-    [fecha]="noticias()[1].fecha"
-  >
-  </app-new-view-component>
-
-</section>
