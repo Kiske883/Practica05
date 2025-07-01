@@ -45,15 +45,23 @@ export class MainComponent implements INoticiaInterface {
     noticiasPromise: WritableSignal<INoticiaInterface[]> = signal([]);
 
   // Evento que se ejecuta en el momento de cargar el componente
-  ngOnInit() {
-    // this.noticias = this.newsService.getAll();
-    // Al ser un signal utilizo el set
-    // this.noticias.set(this.newsService.getAll());
-    
-    // request HTTP con Observable
+  async ngOnInit() {
+
+    /* Utilizando directamente el fichero de datos 
+       this.noticias = this.newsService.getAll();
+       Al ser un signal utilizo el set
+       this.noticias.set(this.newsService.getAll());
+    */
+
+    /* request HTTP con Observable
     this.newsService.getAllUserObservable().subscribe( (data) => {
       this.noticias.set(data);
     })
+    */
+
+    /* request HTTP con Promise */
+    this.noticias.set( await this.newsService.getAllNewPromise());
+ 
   }
 
   publicar() {
@@ -69,8 +77,8 @@ export class MainComponent implements INoticiaInterface {
       fecha: this.fecha
     };
 
-    this.noticias.update(noticias => [nuevaNoticia, ...noticias]);
-    // this.newsService.insert(nuevaNoticia);
+    // this.noticias.update(noticias => [nuevaNoticia, ...noticias]);
+    this.newsService.insert(nuevaNoticia);
 
     this.titulo = '';
     this.imagen = '';
