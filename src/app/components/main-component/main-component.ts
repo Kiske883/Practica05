@@ -44,9 +44,6 @@ export class MainComponent implements INoticiaInterface {
     }*/
   ]);
 
-  noticiasObservable: WritableSignal<INoticiaInterface[]> = signal([]);
-  noticiasPromise: WritableSignal<INoticiaInterface[]> = signal([]);
-
   // Evento que se ejecuta en el momento de cargar el componente
   async ngOnInit() {
 
@@ -91,6 +88,8 @@ export class MainComponent implements INoticiaInterface {
       fecha: this.fecha
     };
 
+    // El update lo utilizaba cuando no tenia el service y tenia que controlar desde maincomponent
+    // el array de noticias, ahora delego en newService
     // this.noticias.update(noticias => [nuevaNoticia, ...noticias]);
     this.newsService.insert(nuevaNoticia);
 

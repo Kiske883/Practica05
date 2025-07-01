@@ -2,11 +2,12 @@
   <section class="formulario">
     <h2>Publicar nueva noticia</h2>
     <form (submit)="publicar(); $event.preventDefault()">
+
       <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
       <input
         [(ngModel)]="imagen"
         name="imagen"
-        placeholder="URL de la imagen"
+        placeholder="https://placehold.co/200x120"
         required
       />
       <textarea
@@ -17,6 +18,7 @@
       ></textarea>
       <input [(ngModel)]="fecha" name="fecha" type="date" required />
       <button type="submit">Publicar</button>
+
     </form>
 
     <!-- Si tenemos errores en el formulario, mostramos que campo/s es necesario rellenar -->
