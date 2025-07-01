@@ -2,6 +2,12 @@ import { INoticiaInterface } from "../interfaces/inoticia-interface";
 
 // Damos a un paso mas alla añadiendo un fichero db, para consumirlo 
 // desde un service
+
+// http://jsonblob.com/1389544641426284544
+
+// LAN0 - 20250701
+// app.quicktype.io - es una herramienta que desde un json nos genera la interface
+
 export const NEWS : INoticiaInterface[] = [
     {
       titulo: 'Angular 20 lanzado',
