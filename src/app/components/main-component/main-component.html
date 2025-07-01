@@ -20,7 +20,7 @@
     </form>
 
     <!-- Si tenemos errores en el formulario, mostramos que campo/s es necesario rellenar -->
-    @if (formError() !== ''){
+    @if (formError()){
     <div class="form-error">
       {{ formError() }}
     </div>

@@ -20,7 +20,7 @@ export class MainComponent implements INoticiaInterface {
   texto = '';
   fecha = '';
 
-  formError = signal('');
+  formError = signal<string | null>(null);
 
   // instanciamos service con la directiva inject para poder usarlo
   newsService = inject(NewsService);
@@ -28,7 +28,8 @@ export class MainComponent implements INoticiaInterface {
   defaultImage: string = "https://placehold.co/200x120";
 
   noticias: WritableSignal<INoticiaInterface[]> = signal([
-    /* Empezamos añadiendo los articulos hardcodeados
+
+    /* Empezamos añadiendo los articulos hardcodeados, lo anulamos ya que al final utilizamos news.db.ts
     {
       titulo: 'Angular 20 lanzado',
       imagen: 'https://placehold.co/200x120',
@@ -70,6 +71,9 @@ export class MainComponent implements INoticiaInterface {
 
     const formErrors = [];
 
+    // Inicializo formError, para que no se quede siempre mostrando errores
+    this.formError.set(null);
+
     if (!this.titulo) formErrors.push('título');
     if (!this.imagen) formErrors.push('imagen');
     if (!this.texto) formErrors.push('texto');
@@ -78,7 +82,7 @@ export class MainComponent implements INoticiaInterface {
     if (formErrors.length > 0) {
       this.formError.set(`Por favor, rellena los siguientes campos: ${formErrors.join(', ')}`);
       return;
-    }
+    } 
 
     const nuevaNoticia: INoticiaInterface = {
       titulo: this.titulo,

@@ -9,7 +9,9 @@ import { lastValueFrom, Observable } from 'rxjs';
 })
 export class NewsService {
 
-  private news: INoticiaInterface[] = NEWS;
+  // Anulo la carga de mi fichero de datos db, pq vamos a utilizar directamente el response de jsonBlobAPI
+  // private news: INoticiaInterface[] = NEWS;
+  private news: INoticiaInterface[] = [];
 
   getAll(): INoticiaInterface[] {
     return this.news;
