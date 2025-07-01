@@ -1,25 +1,30 @@
 <div class="container__wrapper">
   <section class="formulario">
     <h2>Publicar nueva noticia</h2>
+    <div class="form">
+    <!--
     <form (submit)="publicar(); $event.preventDefault()">
 
-      <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
+      <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />  -->
+      <!-- LAN0 : Modificacion Realizada despues de la clase 20250701 -->
+      <input #tituloInput name="titulo" placeholder="Título" required />
       <input
-        [(ngModel)]="imagen"
+        #imagenInput
         name="imagen"
         placeholder="https://placehold.co/200x120"
         required
       />
       <textarea
-        [(ngModel)]="texto"
+        #textoInput
         name="texto"
         placeholder="Texto de la noticia"
         required
       ></textarea>
-      <input [(ngModel)]="fecha" name="fecha" type="date" required />
-      <button type="submit">Publicar</button>
-
-    </form>
+      <input #fechaInput name="fecha" type="date" required />
+      <!-- <button type="submit">Publicar</button> -->
+       <button (click)="publicar(tituloInput.value,imagenInput.value,textoInput.value,fechaInput.value)">Publicar</button>
+    </div>  
+    <!--</form> -->
 
     <!-- Si tenemos errores en el formulario, mostramos que campo/s es necesario rellenar -->
     @if (formError()){

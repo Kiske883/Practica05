@@ -64,9 +64,14 @@ export class MainComponent implements INoticiaInterface {
 
   }
 
-  publicar() {
+  publicar(titulo: string, imagen: string, texto: string, fecha: string) {
 
     const formErrors = [];
+
+    this.titulo = titulo;
+    this.imagen = imagen;
+    this.texto = texto;
+    this.fecha = fecha;
 
     // Inicializo formError, para que no se quede siempre mostrando errores
     this.formError.set(null);
@@ -79,7 +84,7 @@ export class MainComponent implements INoticiaInterface {
     if (formErrors.length > 0) {
       this.formError.set(`Por favor, rellena los siguientes campos: ${formErrors.join(', ')}`);
       return;
-    } 
+    }
 
     const nuevaNoticia: INoticiaInterface = {
       titulo: this.titulo,
