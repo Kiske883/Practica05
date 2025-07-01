@@ -29,6 +29,7 @@ export class NewsService {
   // 2 Noticias
   private baseURL = "https://jsonblob.com/api/jsonBlob/1389544641426284544";
 
+  // He creado tambien un Json de 3 Noticias para comprobar que se estan cargando dinamicamente
   // 3 Noticias
   // private baseURL = "https://jsonblob.com/api/jsonBlob/1389613178501128192";
 
