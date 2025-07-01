@@ -20,12 +20,13 @@ export class MainComponent implements INoticiaInterface {
   texto = '';
   fecha = '';
 
+  // instanciamos service con la directiva inject para poder usarlo
   newsService = inject(NewsService);
 
   defaultImage : string = "https://placehold.co/200x120";
 
   noticias: WritableSignal<INoticiaInterface[]> = signal([
-    /*
+    /* Empezamos añadiendo los articulos hardcodeados
     {
       titulo: 'Angular 20 lanzado',
       imagen: 'https://placehold.co/200x120',
@@ -40,8 +41,10 @@ export class MainComponent implements INoticiaInterface {
     }*/
   ]);
 
+  // Evento que se ejecuta en el momento de cargar el componente
   ngOnInit() {
     // this.noticias = this.newsService.getAll();
+    // Al ser un signal utilizo el set
     this.noticias.set(this.newsService.getAll());
   }
 
@@ -58,7 +61,8 @@ export class MainComponent implements INoticiaInterface {
       fecha: this.fecha
     };
 
-    this.noticias.update(noticias => [nuevaNoticia, ...noticias]);
+    // this.noticias.update(noticias => [nuevaNoticia, ...noticias]);
+    this.newsService.insert(nuevaNoticia);
 
     this.titulo = '';
     this.imagen = '';
