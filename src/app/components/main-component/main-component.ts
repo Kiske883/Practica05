@@ -7,7 +7,7 @@ import { NewsService } from '../../services/news-service';
 
 @Component({
   selector: 'app-main-component',
-  imports: [CommonModule,FormsModule,NewViewComponent],
+  imports: [CommonModule, FormsModule, NewViewComponent],
   templateUrl: './main-component.html',
   styleUrl: './main-component.css'
 })
@@ -20,10 +20,12 @@ export class MainComponent implements INoticiaInterface {
   texto = '';
   fecha = '';
 
+  formError = signal('');
+
   // instanciamos service con la directiva inject para poder usarlo
   newsService = inject(NewsService);
 
-  defaultImage : string = "https://placehold.co/200x120";
+  defaultImage: string = "https://placehold.co/200x120";
 
   noticias: WritableSignal<INoticiaInterface[]> = signal([
     /* Empezamos añadiendo los articulos hardcodeados
@@ -41,8 +43,8 @@ export class MainComponent implements INoticiaInterface {
     }*/
   ]);
 
-    noticiasObservable: WritableSignal<INoticiaInterface[]> = signal([]);
-    noticiasPromise: WritableSignal<INoticiaInterface[]> = signal([]);
+  noticiasObservable: WritableSignal<INoticiaInterface[]> = signal([]);
+  noticiasPromise: WritableSignal<INoticiaInterface[]> = signal([]);
 
   // Evento que se ejecuta en el momento de cargar el componente
   async ngOnInit() {
@@ -60,13 +62,21 @@ export class MainComponent implements INoticiaInterface {
     */
 
     /* request HTTP con Promise */
-    this.noticias.set( await this.newsService.getAllNewPromise());
- 
+    this.noticias.set(await this.newsService.getAllNewPromise());
+
   }
 
   publicar() {
-    if (!this.titulo || !this.imagen || !this.texto || !this.fecha) {
-      alert('Por favor, rellena todos los campos');
+
+    const formErrors = [];
+
+    if (!this.titulo) formErrors.push('título');
+    if (!this.imagen) formErrors.push('imagen');
+    if (!this.texto) formErrors.push('texto');
+    if (!this.fecha) formErrors.push('fecha');
+
+    if (formErrors.length > 0) {
+      this.formError.set(`Por favor, rellena los siguientes campos: ${formErrors.join(', ')}`);
       return;
     }
 

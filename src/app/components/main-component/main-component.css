@@ -67,6 +67,16 @@
   background-color: #135ba1;
 }
 
+.form-error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  background: #ffe5e5;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
 .noticias-container-wrapper {
   display: flex;
   flex-direction: column;

@@ -18,38 +18,31 @@
       <input [(ngModel)]="fecha" name="fecha" type="date" required />
       <button type="submit">Publicar</button>
     </form>
+
+    <!-- Si tenemos errores en el formulario, mostramos que campo/s es necesario rellenar -->
+    @if (formError() !== ''){
+    <div class="form-error">
+      {{ formError() }}
+    </div>
+    }
   </section>
 
   <hr />
-  <!--
-  <section class="noticias">
-    <h2>Listado de noticias</h2>
-    <div class="noticias-container-wrapper">
-      <div *ngFor="let noticia of noticias()" class="noticia">
-        <h3>{{ noticia.titulo }}</h3>
-        <img [src]="noticia.imagen" alt="{{ noticia.titulo }}" width="200" />
-        <p>{{ noticia.texto }}</p>
-        <small>Publicado el: {{ noticia.fecha }}</small>
-        <hr />
-      </div>
-    </div>
-  </section>
--->
 
   <section class="noticias">
     <div class="noticias-wrapper">
-    <h2>Vista de noticia destacada</h2>
-    <div class="noticias-container-wrapper">
-      @for(noticia of noticias();track noticia.titulo) {
-      <app-new-view-component
-        [titulo]="noticia.titulo"
-        [imagen]="noticia.imagen"
-        [texto]="noticia.texto"
-        [fecha]="noticia.fecha"
-      >
-      </app-new-view-component>
-      }
-    </div>
+      <h2>Vista de noticia destacada</h2>
+      <div class="noticias-container-wrapper">
+        @for(noticia of noticias();track noticia.titulo) {
+        <app-new-view-component
+          [titulo]="noticia.titulo"
+          [imagen]="noticia.imagen"
+          [texto]="noticia.texto"
+          [fecha]="noticia.fecha"
+        >
+        </app-new-view-component>
+        }
+      </div>
     </div>
   </section>
 </div>
