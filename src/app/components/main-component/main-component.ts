@@ -1,4 +1,4 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, Input, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewViewComponent } from '../new-view-component/new-view-component';
@@ -64,14 +64,16 @@ export class MainComponent implements INoticiaInterface {
 
   }
 
-  publicar(titulo: string, imagen: string, texto: string, fecha: string) {
-
+  // publicar(titulo: string, imagen: string, texto: string, fecha: string) {
+  publicar() {
     const formErrors = [];
 
+    /*
     this.titulo = titulo;
     this.imagen = imagen;
     this.texto = texto;
     this.fecha = fecha;
+    */
 
     // Inicializo formError, para que no se quede siempre mostrando errores
     this.formError.set(null);

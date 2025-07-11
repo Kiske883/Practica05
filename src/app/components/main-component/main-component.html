@@ -4,25 +4,27 @@
     <div class="form">
     <!--
     <form (submit)="publicar(); $event.preventDefault()">
-
-      <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />  -->
+    -->
       <!-- LAN0 : Modificacion Realizada despues de la clase 20250701 -->
-      <input #tituloInput name="titulo" placeholder="Título" required />
+      <!-- <input #tituloInput name="titulo" placeholder="Título" required /> -->
+       <!-- LAN0 : Modificacion Realizada despues de la clase 20250703 -->
+      <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />   
       <input
-        #imagenInput
+        [(ngModel)]="imagen"
         name="imagen"
         placeholder="https://placehold.co/200x120"
         required
       />
       <textarea
-        #textoInput
+        [(ngModel)]="texto"
         name="texto"
         placeholder="Texto de la noticia"
         required
       ></textarea>
-      <input #fechaInput name="fecha" type="date" required />
+      <input [(ngModel)]="fecha" name="fecha" type="date" required />
       <!-- <button type="submit">Publicar</button> -->
-       <button (click)="publicar(tituloInput.value,imagenInput.value,textoInput.value,fechaInput.value)">Publicar</button>
+      <!-- <button (click)="publicar(tituloInput.value,imagenInput.value,textoInput.value,fechaInput.value)">Publicar</button> -->
+      <button (click)="publicar()">Publicar</button> 
     </div>  
     <!--</form> -->
 
