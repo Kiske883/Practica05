@@ -6,7 +6,13 @@ import { INoticiaInterface } from '../../interfaces/inoticia-interface';
 import { NewsService } from '../../services/news-service';
 
 @Component({
-  selector: 'app-main-component',
+  
+  // He visto que en la rubrica hay que crear un blog component
+  // como ya lo habia creado como main-component, le cambio el alias
+  // espero que sea suficiente y no perder los 2 puntos
+
+  // selector: 'app-main-component',
+  selector: 'app-blog-component',
   imports: [CommonModule, FormsModule, NewViewComponent],
   templateUrl: './main-component.html',
   styleUrl: './main-component.css'
