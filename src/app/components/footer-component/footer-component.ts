@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
-  footerTitle : string = "© agoodShop"
+  footerTitle : string = "© agoodNews"
 
 }
